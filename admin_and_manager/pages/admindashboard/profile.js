@@ -1,6 +1,7 @@
 import Link from "next/link";
 import dynamic from 'next/dynamic'
 import NavBar from "../Layout/navbar";
+import LogoutButton from '../logout';
 
 const Layout = dynamic(() => import('../Layout/layout'), {
   ssr: false,
@@ -12,7 +13,7 @@ const Title = dynamic(() => import('../Layout/title'), {
 
 export default function Profile( ) {
 
- 
+//  
   return (
     <>
 
@@ -26,12 +27,16 @@ export default function Profile( ) {
 <Link  className="link link-primary" href="/admindashboard/allmanager">ALL Manager</Link>
 <br/>
  <br/>
+ 
+ <LogoutButton />
 
 </Layout>
   
     </>
   )
 }
+
+
 
 
 

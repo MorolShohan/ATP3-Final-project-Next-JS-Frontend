@@ -22,7 +22,7 @@ export default function AllAdmin() {
     async function fetchData() {
    
         try {
-             const response = await axios.get(process.env.NEXT_PUBLIC_API_ENDPOINT + "/admin/search/"+adminid,
+             const response = await axios.get(process.env.NEXT_PUBLIC_API_ENDPOINT + "/admin/findadmin/"+adminid,
              {
                 withCredentials: true
               }
@@ -37,16 +37,35 @@ export default function AllAdmin() {
 
     const printObject = (jsonData) => {
         return (
-            <div>
-              
-                <img src={process.env.NEXT_PUBLIC_API_ENDPOINT + '/admin/getimage/' + jsonData.filenames} />
-                <h2>id: {jsonData.id}</h2>
-                <h2>name: {jsonData.name}</h2>
-                <h2>email: {jsonData.email}</h2>
-
-            </div>
+            <div className="flex flex-col items-center">
+            <img
+              src={`${process.env.NEXT_PUBLIC_API_ENDPOINT}/admin/getimage/${jsonData.filenames}?size=small`}
+              alt="Admin Image"
+              className="rounded-full mb-4 h-44 w-44"
+            />
+            <table className="border-collapse border border-gray-400">
+              <tbody>
+                <tr>
+                  <td className="border-2 border-gray-400 p-2 font-semibold">ID:</td>
+                  <td className="border-2 border-gray-400 p-2">{jsonData.id}</td>
+                </tr>
+                <tr>
+                  <td className="border-2 border-gray-400 p-2 font-semibold">Name:</td>
+                  <td className="border-2 border-gray-400 p-2">{jsonData.fullname}</td>
+                </tr>
+                <tr>
+                  <td className="border-2 border-gray-400 p-2 font-semibold">Email:</td>
+                  <td className="border-2 border-gray-400 p-2">{jsonData.email}</td>
+                </tr>
+                <tr>
+                  <td className="border-2 border-gray-400 p-2 font-semibold">Phone:</td>
+                  <td className="border-2 border-gray-400 p-2">{jsonData.phone}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         );
-    }
+      };
 
     return (
 

@@ -8,7 +8,7 @@ export default function NavBar() {
   const [jsonData, setJsonData] = useState('')
   const router = useRouter();
   const { user, logout, checkUser } = useAuth();
-
+const [email,setEmail] = useState();
   useEffect(() => {
 
     checkSession();
@@ -17,11 +17,11 @@ export default function NavBar() {
 
   function checkSession()
   {
-    if (user!=null) {
-      
+    if (sessionStorage.getItem('email')!=null) {
+      setEmail(sessionStorage.getItem('email'))
       fetchData();
-      console.log("user:  "+user.email)
-      console.log("user:  "+user.cookie)
+      console.log("user:  "+email)
+      // console.log("user:  "+user.cookie)
     }
     else {
       router.push('/loginform')
@@ -31,7 +31,7 @@ export default function NavBar() {
   async function fetchData() {
 
     try {
-      const response = await axios.get(process.env.NEXT_PUBLIC_API_ENDPOINT + "/admin/getuser/" + user.email,
+      const response = await axios.get(process.env.NEXT_PUBLIC_API_ENDPOINT + "/admin/getuser/" + email,
 
       );
       const jsonData = response.data;

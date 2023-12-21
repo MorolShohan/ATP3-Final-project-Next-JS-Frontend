@@ -15,7 +15,7 @@ const YourComponent = () => {
     } catch (error) {
       console.error('Error fetching user by ID:', error);
       setUserData(null);
-      setError('Error fetching user. Please try again.');
+      setError('Admin Dosent exist with this ID. Please try again.');
     }
   };
  
