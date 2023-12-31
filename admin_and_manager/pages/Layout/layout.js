@@ -10,8 +10,10 @@ export default function Layout (
         <>
        
 <Header/>
-
-  {children}
+<div className=' min-h-[78.5vh]'>
+    {children}
+</div>
+ 
 <Footer/>
 
         </>

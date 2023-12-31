@@ -1,4 +1,4 @@
-import AdminSearch from '../Layout/searchadminid';
+import ManagerSearch from '../Layout/searchmanagerid';
 const SearchPage = () => {
     return (
       <div>
@@ -7,4 +7,4 @@ const SearchPage = () => {
     );
   };
  
-  export default AdminSearch;
+  export default ManagerSearch;

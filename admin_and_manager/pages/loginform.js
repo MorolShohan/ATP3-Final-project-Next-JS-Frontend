@@ -14,17 +14,21 @@ export default function SignIn() {
     event.preventDefault()
 
     try {
-      const response = await axios.post('http://localhost:3000/admin/signin', { email, password })
+      const response = await axios.post('http://localhost:3000/admin/signin', { email, password },{withCredentials:true})
       console.log("res: "+response.data)
       
+      if (response.data) {
         sessionStorage.setItem('email', response.data);
         router.push('/admindashboard/profile');
+      } else {
+        setError("Invalid login");
+      }
 
     } catch (error) {
-        console.log("error22: "+error.message)
-      setError("invalid login")
+      console.log("error22: " + error.message);
+      setError("Invalid login");
     }
-  }
+  };
 
  
 
@@ -62,6 +66,12 @@ export default function SignIn() {
 </section>
 
 </div>
+<br/>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ 
 </Layout>
 
             </>

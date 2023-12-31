@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getUserByID } from './searchadmin';
+import Link from 'next/link';
 import Layout from './layout';
  
 const YourComponent = () => {
@@ -22,8 +23,9 @@ const YourComponent = () => {
 
   return (
     <Layout>
+      <button className="btn btn-active btn-link"> <Link  className="link link-primary" href="/admindashboard/profile">Back To Dashboard</Link> </button>
       <div className="container mx-auto mt-8">
-        <label className="block text-lg font-semibold mb-2">Enter User ID:</label>
+        <label className="block text-lg font-semibold mb-2">Enter Admin ID:</label>
         <div className="flex items-center">
           <input
             type="text"
@@ -60,7 +62,9 @@ const YourComponent = () => {
         </tbody>
       </table>
     </div>
+    
   </div>
+  
 )}
 
    

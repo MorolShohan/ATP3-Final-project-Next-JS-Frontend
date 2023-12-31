@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .push {
+    flex: 1;
+  }
+  
+  /* Add this style to create space between form and footer */
+  form {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+  }

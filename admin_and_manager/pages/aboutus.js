@@ -8,7 +8,7 @@ export default function About() {
       <Layout>
       <div className="container mx-auto p-8 text-center">
           <h1 className="text-4xl font-bold mb-4">Our Story</h1>
-          <p className="text-gray-600 mb-8">
+          <p className="text-white-600 mb-8">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod
             libero nec erat bibendum, a fermentum nunc ultricies.
           </p>
@@ -23,13 +23,13 @@ export default function About() {
 
           <div className="text-left">
             <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-white-600 mb-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod
               libero nec erat bibendum, a fermentum nunc ultricies.
             </p>
 
             <h2 className="text-2xl font-bold mb-4">Our Values</h2>
-            <ul className="list-disc pl-6 text-gray-600 mb-8">
+            <ul className="list-disc pl-6 text-white-600 mb-8">
               <li>Quality First</li>
               <li>Customer Satisfaction</li>
               <li>Innovation</li>
@@ -37,7 +37,7 @@ export default function About() {
             </ul>
 
             <h2 className="text-2xl font-bold mb-4">Meet Our Team</h2>
-            <p className="text-gray-600 mb-4">
+            <p className="text-white-600 mb-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod
               libero nec erat bibendum, a fermentum nunc ultricies.
             </p>

@@ -1,8 +1,9 @@
-import AdminSearch from '../components/searchid';
+import AdminSearch from '../Layout/searchadminid';
 const SearchPage = () => {
     return (
       <div>
         <SearchPage />
+        
       </div>
     );
   };

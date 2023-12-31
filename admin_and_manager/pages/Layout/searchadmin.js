@@ -6,7 +6,7 @@ const backendAPI = axios.create({
  
 export const getUserByID = async (id) => {
   try {
-    const response = await backendAPI.get(`/admin/findadmin/${id}`);
+    const response = await backendAPI.get(`/admin/findadmin/${id}`,{withCredentials:true});
     return response.data; // Assuming the response contains the user data
   } catch (error) {
     console.error('Error fetching user by ID:', error);

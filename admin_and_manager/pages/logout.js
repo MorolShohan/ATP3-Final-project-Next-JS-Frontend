@@ -6,8 +6,8 @@ const LogoutButton = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post('/http://localhost:3000/admin/signout');
-      // Redirect to the login page or any other page after logout
+      await axios.post('http://localhost:3000/admin/signout',{},{withCredentials:true});
+      sessionStorage.clear();
       router.push('/loginform');
     } catch (error) {
       console.error('Logout failed:', error);
@@ -15,7 +15,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <button onClick={handleLogout}>Logout</button>
+    <button onClick={handleLogout}>LOGOUT</button>
   );
 };
 

@@ -9,9 +9,11 @@ const Layout = dynamic(() => import('../Layout/layout'), {
 const Title = dynamic(() => import('../Layout/title'), {
   ssr: false,
 });
+import ManagerUpdateForm from '../updatemanagerform';
 
-export default function AllAdmin() {
+export default function AllManager() {
   const [jsonData, setJsonData] = useState(null);
+  const [selectedManager, setSelectedManager] = useState(null); 
 
   useEffect(() => {
     fetchData();
@@ -32,9 +34,44 @@ export default function AllAdmin() {
     }
   }
 
+  async function deleteamanager(id)
+{
+  try {
+    const response = await axios.delete(process.env.NEXT_PUBLIC_API_ENDPOINT + "/admin/deletemanager/" +id,
+      {
+        withCredentials: true
+      }
+    );
+    fetchData();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function updateManager(id) {
+  setSelectedManager(id);
+}
+
+async function handleUpdateManager(updatedManagerData) {
+  try {
+    // Make a PUT or PATCH request to update the admin data
+    const response = await axios.put(
+      process.env.NEXT_PUBLIC_API_ENDPOINT + "/admin/updatemanager/" + updatedManagerData.id,
+      updatedManagerData,
+      {
+        withCredentials: true,
+      }
+    );
+    setSelectedManager(null);
+    fetchData(); 
+  } catch (error) {
+    console.error(error);
+  }
+}
+
   const renderTable = (jsonData) => {
     return (
-      <table className="min-w-full bg-white border border-gray-300">
+      <table className="min-w-full bg-black border border-gray-300">
         <thead>
           <tr>
             <th className="py-2 px-4 border-4">ID</th>
@@ -42,6 +79,8 @@ export default function AllAdmin() {
             <th className="py-2 px-4 border-4">Email</th>
             <th className="py-2 px-4 border-4">Phone</th>
             <th className="py-2 px-4 border-4">Admin ID</th>
+            <th className="py-2 px-4 border-4">Delete</th>
+            <th className="py-2 px-4 border-4">Update</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +94,17 @@ export default function AllAdmin() {
                 <Link href={"adminprofile/" + item.id}>
                   
                 </Link>
+
               </td>
+              <td className="py-3 px-7 border-4">
+                <button onClick={()=>deleteamanager(item.id)}>Delete</button>
+                
+                {}</td>
+
+                <td className="py-3 px-7 border-4">
+                <button onClick={() => updateManager(item.id)}>Update</button>
+                
+                {}</td>
             </tr>
           ))}
         </tbody>
@@ -77,6 +126,12 @@ export default function AllAdmin() {
           <h2 className="text-xl font-semibold mb-4">All Manager Data</h2>
           {jsonData != null && renderTable(jsonData)}
         </div>
+        {setSelectedManager  && (
+          <ManagerUpdateForm
+            managerId={selectedManager}
+            onUpdateManager={handleUpdateManager}
+          />
+        )}
         
       </Layout>
       

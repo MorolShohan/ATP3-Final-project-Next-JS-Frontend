@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic'
 import NavBar from "../../Layout/navbar";
+import Link from 'next/link';
+import { data } from 'autoprefixer';
 const Layout = dynamic(() => import('../../Layout/layout'), {
   ssr: false,
 })
@@ -17,7 +19,7 @@ export default function AllAdmin() {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [adminid]);
 
     async function fetchData() {
    
@@ -70,6 +72,7 @@ export default function AllAdmin() {
     return (
 
         <>
+        <button className="btn btn-active btn-link"> <Link  className="link link-primary" href="/admindashboard/profile">Back To Dashboard</Link> </button>
   <Title page="ALL Aadmin"> </Title>
   <Layout>
     <NavBar/>
